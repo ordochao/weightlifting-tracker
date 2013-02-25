@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+					   xmlns:s="library://ns.adobe.com/flex/spark"
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   width="700" height="400" backgroundColor="#D9D1BA"
+					   initialize="windowedapplication1_initializeHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import wii.WiiControl;
+			[Bindable]
+			protected var centerHeight:Number;
+			[Bindable]
+			protected var leftHeight:Number;
+			[Bindable]
+			protected var rightHeight:Number;
+			
+			
+			protected var centerLevel:Number;
+			
+			protected var leftLevel:Number;
+			
+			protected var rightLevel:Number;
+			
+			protected var wiiControl:WiiControl;
+			
+			protected function windowedapplication1_initializeHandler(event:FlexEvent):void
+			{
+				
+				centerHeight = backgroundCenter.y + backgroundCenter.height - Math.random()*100;
+				wiiControl.addEventListener(Event.CHANGE,refreshView);
+				
+			}
+			
+			protected function refreshView(e:Event):void {
+				
+			}
+			
+			protected function myButton_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				applicationTitle.text="Narcis";				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Label id="applicationTitle" left="10" top="10" color="#688C8C" fontFamily="Verdana"
+			 fontSize="20" fontWeight="bold" text="WEIGHT LIFTING STAR"/>
+	<s:Label id="scoreLabel" right="75" top="10" color="#688C8C" fontSize="14" text="score: "/>
+	<s:Label id="scoreDisplay" right="20" top="10" color="#890000" fontSize="16" text="72.321"/>
+	<s:Rect id="backgroundLeft" y="100" width="75" height="250" horizontalCenter="0">
+		<s:fill>
+			<s:SolidColor color="#688C8C" />
+		</s:fill>
+	</s:Rect>
+	<s:Button id="myButton" x="188" y="153" click="myButton_clickHandler(event)"/>
+	<s:Rect id="backgroundCenter" y="100" right="50" width="75" height="250">
+		<s:fill>
+			<s:SolidColor color="#688C8C" />
+		</s:fill>
+	</s:Rect>
+	<s:Rect id="backgroundRight" y="100" left="50" width="75" height="250">
+		<s:fill>
+			<s:SolidColor color="#688C8C" />
+		</s:fill>
+	</s:Rect>
+	<s:Rect id="levelCenter" y="250" width="75" top="{centerHeight}" horizontalCenter="0">
+		<s:fill>
+			<s:SolidColor color="#F2A057" />
+		</s:fill>
+	</s:Rect>
+	<s:Rect id="levelLeft" y="250" right="50" width="75" height="100">
+		<s:fill>
+			<s:SolidColor color="#1E3A40" />
+		</s:fill>
+	</s:Rect>
+	<s:Rect id="levelRight" y="235" left="50" width="75" height="115">
+		<s:fill>
+			<s:SolidColor color="#1E3A40" />
+		</s:fill>
+	</s:Rect>
+	<s:Line xFrom="50" yFrom="{centerHeight}" xTo="{width-50}" yTo="{centerHeight}" >
+		<s:stroke>
+			<s:SolidColorStroke  color="#AA0000" weight="1" caps="square" >
+				
+			</s:SolidColorStroke>	
+		</s:stroke>		
+	</s:Line>
+	<s:Label x="40" y="360" color="#1E3A40" fontSize="10" text="LEFT HAND SPEED"/>
+	<s:Label x="308" y="360" color="#1E3A40" fontSize="10" text="CORRECT SPEED"/>
+	<s:Label x="561" y="360" color="#1E3A40" fontSize="10" text="RIGHT HAND SPEED"/>
+</s:WindowedApplication>
